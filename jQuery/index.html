@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>jQuery</title>
+  <style type="text/css">
+    .xxx{
+      height: 100px;
+      width: 100px;
+      background: orange;
+    }
+    .active{
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="xxx">
+    <p>text1</p>
+    <p>text2</p>
+    <p>text3</p>
+    <p>text4</p>
+  </div>
+  <div class="xxx">
+    <p>text1</p>
+    <p>text2</p>
+    <p>text3</p>
+    <p>text4</p>
+  </div>
+  <script src="./jquery.js"></script>
+  <script charset="utf-8">
+    $xxx.find('p').addClass('active').end().removeClass('active')
+  </script>
+</body>
+</html>
