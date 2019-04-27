@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>JS Bin</title>
+    <style>
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li id="item1">选项1</li>
+        <li id="item2">选项2</li>
+        <li id="item3">选项3</li>
+        <li id="item4">选项4</li>
+        <li id="item5">选项5</li>
+    </ul>
+</body>
+<script>
+    window.jQuery = function (nodeOrSelector) {
+        let node
+        if (typeof nodeOrSelector === 'string') {
+            node = document.querySelector(nodeOrSelector)
+        } else {
+            node = nodeOrSelector
+        } // 判断是否是node还是选择器
+        return {
+            getSiblings: function (node) {
+                var allChildren = node.parentNode.children
+                var array = {
+                    length: 0
+                }
+
+                for (let i = 0; i < allChildren.length; i++) {
+                    if (allChildren[i] !== node) {
+                        array[array.length] = allChildren[i]
+                        array.length += 1
+                    }
+                }en
+                return array
+            },
+            addClass: function (classes) {
+                for (let key in classes) {
+                    var value = classes[key]
+                    var methodName = value ? 'add' : 'remove'
+                    node.classList[methodName](key)
+                }
+            }
+
+        }
+    }
+
+    var node2 = jQuery(item3)
+    node2.addClass({green:true})
+</script>
+
+</html>
