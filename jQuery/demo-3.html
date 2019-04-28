@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>nodes 添加class</title>
+    <style>
+        .green {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li id="item1">选项1</li>
+        <li id="item2">选项2</li>
+        <li id="item3">选项3</li>
+        <li id="item4">选项4</li>
+        <li id="item5">选项5</li>
+    </ul>
+</body>
+<script>
+    window.jQuery = function (nodeOrSelector) {
+        let nodes = {}
+        if (typeof nodeOrSelector === 'string') {
+            let temp = document.querySelectorAll(nodeOrSelector) //伪数组
+            for (let i = 0; i < temp.length; i++) {
+                nodes[i] = temp[i]
+            }
+            nodes.length = temp.length
+        } else if (nodeOrSelector instanceof Node) {
+            nodes = {
+                0: nodeOrSelector,
+                length: 1
+            }
+        }
+        nodes.addClass = function (classes) {
+            for (let key in classes) {
+                var value = classes[key]
+                var methodName = value ? 'add' : 'remove'
+                for (let i = 0; i < nodes.length; i++) {
+                    nodes[i].classList[methodName](key)
+                }
+            }
+        }
+        return nodes
+    }
+
+    var node2 = jQuery('ul > li')
+    node2.addClass({green:true})
+
+</script>
+
+</html>
